@@ -5,6 +5,7 @@ description: Learn how to make your Starlight site your own with custom styles, 
 
 import { Tabs, TabItem } from '@astrojs/starlight/components';
 import FileTree from '../../../components/file-tree.astro';
+import ThemeCustomizer from '../../../components/ThemeCustomizer.astro'
 
 Starlight provides sensible default styling and features, so you can get started quickly with no configuration needed.
 When you want to start customizing the look and feel of your Starlight site, this guide has you covered.
@@ -264,6 +265,8 @@ hero:
 ```
 
 ## Custom CSS styles
+
+<ThemeCustomizer />
 
 Customize the styles applied to your Starlight site by providing additional CSS files to modify or extend Starlight’s default styles.
 

@@ -1,0 +1,69 @@
+---
+const hues = [
+  "--sl-color-white",
+  "--sl-color-gray-1",
+  "--sl-color-gray-2",
+  "--sl-color-gray-3",
+  "--sl-color-gray-4",
+  "--sl-color-gray-5",
+  "--sl-color-gray-6",
+  "--sl-color-black",
+  "--sl-color-orange-low",
+  "--sl-color-orange",
+  "--sl-color-orange-high",
+  "--sl-color-green-low",
+  "--sl-color-green",
+  "--sl-color-green-high",
+  "--sl-color-blue-low",
+  "--sl-color-blue",
+  "--sl-color-blue-high",
+  "--sl-color-purple-low",
+  "--sl-color-purple",
+  "--sl-color-purple-high",
+  "--sl-color-red-low",
+  "--sl-color-red",
+  "--sl-color-red-high",
+];
+---
+
+<script>
+  const prefix = "theme-customizer-";
+  const root = document.querySelector(":root") as Element;
+  const computedStyles = getComputedStyle(root);
+  const colorSelectors = document.querySelectorAll(
+    `input[type="color"][id^=${prefix}]`
+  );
+  const textSelectors = document.querySelectorAll(
+    `input[type="text"][id^=${prefix}]`
+  );
+  colorSelectors.forEach((value) => {
+    const variableName = value.id.substring(prefix.length);
+    const variableValue = computedStyles.getPropertyValue(variableName);
+    // console.log(variableValue);
+  });
+  textSelectors.forEach((value) => {
+    const variableName = value.id.substring(prefix.length);
+    const variableValue = computedStyles.getPropertyValue(variableName);
+    value.value = variableValue;
+  });
+  colorSelector.forEach((value) => {
+    value.addEventListener("input", (e) => {
+      const root = document.querySelector(":root") as Element;
+      root.style.setProperty("--sl-color-accent-high", e.target.value);
+    });
+  });
+</script>
+
+{
+  hues.map((value) => (
+    <>
+      <div>
+        <input type="text" id={`theme-customizer-${value}`} disabled />
+        <input type="color" id={`theme-customizer-${value}`} />
+        <label>
+          <code>{value}: value here</code>
+        </label>
+      </div>
+    </>
+  ))
+}
