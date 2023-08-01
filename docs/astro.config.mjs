@@ -52,6 +52,10 @@ export default defineConfig({
 			locales,
 			sidebar: [
 				{
+					label: 'Sidebar',
+					autogenerate: { directory: 'footer' },
+				},
+				{
 					label: 'Start Here',
 					translations: {
 						de: 'Beginne hier',
